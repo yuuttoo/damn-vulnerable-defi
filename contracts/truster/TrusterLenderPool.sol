@@ -24,7 +24,7 @@ contract TrusterLenderPool is ReentrancyGuard {
         uint256 borrowAmount,
         address borrower,
         address target,
-        bytes calldata data
+        bytes calldata data//利用這裡
     )
         external
         nonReentrant
@@ -40,3 +40,5 @@ contract TrusterLenderPool is ReentrancyGuard {
     }
 
 }
+
+

